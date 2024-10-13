@@ -21,7 +21,12 @@
 
         <!-- Right Side  -->
         <div class="bg-gray-50 p-8 md:w-1/2 flex flex-col justify-center">
-            <h2 class="text-gray-800 text-2xl font-bold mb-6 text-center">Login to Your Thrive Account</h2>
+            <h2 class="text-gray-800 text-2xl font-bold mb-6 text-center">Register Your Thrive Account</h2>
+
+            <div class="flex flex-col">
+                <label for="Email" class="text-gray-700 font-semibold mb-1">Email</label>
+                <input type="text" id="username" name="email" placeholder="example.email@gmail.com" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+            </div>
 
             <form action="#" method="POST" class="space-y-4">
                 <div class="flex flex-col">
@@ -33,12 +38,17 @@
                     <label for="password" class="text-gray-700 font-semibold mb-1">Password</label>
                     <input type="password" id="password" name="password" placeholder="Password" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
                 </div>
+
+                <div class="flex flex-col">
+                    <label for="ConfirmPassword" class="text-gray-700 font-semibold mb-1">Confirm Password</label>
+                    <input type="password" id="password" name="ConfirmPassword" placeholder="Confirm Password" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+                </div>
                 <!-- Routing disini nanti -->
                 <button type="submit" class="w-full bg-orange-400 text-white py-2 rounded-md hover:bg-orange-600 transition duration-300">LOGIN</button>
             </form>
 
             <p class="text-center text-gray-600 mt-4">
-                Don't have an account yet? <a href={{ route('register') }} class="text-orange-500 font-semibold">Register</a>
+                Already have an account? <a href={{ route('login') }} class="text-orange-500 font-semibold">login</a>
             </p>
         </div>
     </div>
