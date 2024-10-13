@@ -5,7 +5,7 @@ use App\Http\Controllers\registerController;
 use App\Http\Controllers\loginController;
 
 Route::get('/', function () {
-    return view('app');
+    return view('home');
 });
 
 Route::get('/login', function () {
