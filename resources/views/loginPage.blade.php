@@ -23,6 +23,12 @@
         <div class="bg-gray-50 p-8 md:w-1/2 flex flex-col justify-center">
             <h2 class="text-gray-800 text-2xl font-bold mb-6 text-center">Login to Your Thrive Account</h2>
 
+            @if(session('success'))
+                <div id="success-message" class="bg-green-500 text-white p-4 rounded mb-4 text-center">
+                    {{ session('success') }}
+                </div>
+            @endif
+
             <form action="#" method="POST" class="space-y-4">
                 <div class="flex flex-col">
                     <label for="username" class="text-gray-700 font-semibold mb-1">Username</label>
@@ -33,15 +39,38 @@
                     <label for="password" class="text-gray-700 font-semibold mb-1">Password</label>
                     <input type="password" id="password" name="password" placeholder="Password" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
                 </div>
+
+                <div class="flex justify-end">
+                    <a href="#" class="hover:text-orange-400 transtion duration-100 inline-block">Forgot Password?</a>
+                </div>
+
+
                 <!-- Routing disini nanti -->
                 <button type="submit" class="w-full bg-orange-400 text-white py-2 rounded-md hover:bg-orange-600 transition duration-300">LOGIN</button>
             </form>
+
 
             <p class="text-center text-gray-600 mt-4">
                 Don't have an account yet? <a href={{ route('register') }} class="text-orange-500 font-semibold">Register</a>
             </p>
         </div>
     </div>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const successMessage = document.getElementById('success-message');
+            if (successMessage) {
+                // Hide after 5 seconds (5000ms)
+                setTimeout(() => {
+                    successMessage.style.opacity = '0';
+                    successMessage.style.transition = 'opacity 0.35s ease';
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 500);
+                }, 5000);
+            }
+        });
+    </script>
 </body>
+
+
 </html>

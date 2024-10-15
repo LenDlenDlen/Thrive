@@ -10,4 +10,8 @@ class loginController extends Controller
     {
         return view('loginPage');
     }
+    public function accountLogin(Request $request)
+    {
+        
+    }
 }

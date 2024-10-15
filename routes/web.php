@@ -15,6 +15,10 @@ Route::get('/register', function () {
     return view('registerPage');
 });
 
-Route::get('/login', [registerController::class, 'showRegisterPage'])->name('register');
-Route::get('/register', [loginController::class, 'showLoginPage'])->name('login');
-// Route::post('/registration', [registerController::class, 'register']);
+// return view page
+Route::get('/register', [registerController::class, 'showRegisterPage'])->name('register');
+Route::get('/login', [loginController::class, 'showLoginPage'])->name('login');
+
+// post data to database
+Route::post('/register', [registerController::class, 'accountRegister'])->name('accountRegister');
+Route::post('/login', [loginController::class,'accountLogin'])->name('accountLogin');
