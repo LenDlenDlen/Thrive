@@ -20,16 +20,25 @@
         </div>
 
         <!-- Right Side  -->
-        <div class="bg-gray-50 p-8 md:w-1/2 flex flex-col justify-center">
-            <h2 class="text-gray-800 text-2xl font-bold mb-6 text-center">Login to Your Thrive Account</h2>
+        @if(session('success'))
+        <div id="success-message" class="flex flex-col bg-green-500 text-white p-4 rounded mb-4 text-center">
+            {{ session('success') }}
+        </div>
+    @endif
 
-            @if(session('success'))
-                <div id="success-message" class="bg-green-500 text-white p-4 rounded mb-4 text-center">
-                    {{ session('success') }}
+
+        @if ($errors->has('loginError'))
+                <div class="bg-red-500 text-white p-4 rounded mb-4 text-center">
+                    {{ $errors->first('loginError') }}
                 </div>
             @endif
 
-            <form action="#" method="POST" class="space-y-4">
+        <div class="bg-gray-50 p-8 md:w-1/2 flex flex-col justify-center">
+            <h2 class="text-gray-800 text-2xl font-bold mb-6 text-center">Login to Your Thrive Account</h2>
+
+
+            <form action="{{ route('accountLogin') }}" method="POST" class="space-y-4">
+                @csrf
                 <div class="flex flex-col">
                     <label for="username" class="text-gray-700 font-semibold mb-1">Username</label>
                     <input type="text" id="username" name="username" placeholder="Username" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
@@ -55,7 +64,7 @@
             </p>
         </div>
     </div>
-    <script>
+    {{-- <script>
         document.addEventListener('DOMContentLoaded', function () {
             const successMessage = document.getElementById('success-message');
             if (successMessage) {
@@ -69,7 +78,7 @@
                 }, 5000);
             }
         });
-    </script>
+    </script> --}}
 </body>
 
 

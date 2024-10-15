@@ -8,17 +8,19 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/login', function () {
-    return view('loginPage');
-});
-Route::get('/register', function () {
-    return view('registerPage');
-});
+// Route::get('/login', function () {
+//     return view('loginPage');
+// });
+// Route::get('/register', function () {
+//     return view('registerPage');
+// });
 
 // return view page
 Route::get('/register', [registerController::class, 'showRegisterPage'])->name('register');
 Route::get('/login', [loginController::class, 'showLoginPage'])->name('login');
+// route::get();
 
 // post data to database
 Route::post('/register', [registerController::class, 'accountRegister'])->name('accountRegister');
 Route::post('/login', [loginController::class,'accountLogin'])->name('accountLogin');
+Route::get('/logout', [loginController::class, 'accountLogout'])->name('accountLogout');
