@@ -21,21 +21,30 @@ class loginController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        $user = User::where('username', $credentials['username'])->first();
+
+       if($user){
+        if(Hash::check($credentials['password'], $user->password)){
+            Auth::login($user);
             $request->session()->regenerate();
+
             return redirect()->intended('/');
+            }else{
+                return back()->withErrors([
+                    'password' => 'The provided password is incorrect.',
+                ])->withInput();
+            }
+        }else{
+            return back()->withErrors([
+                'username' => 'The provided account does not exist.',
+            ])->withInput();
         }
-
-        return back()->withErrors([
-            'loginError' => 'The provided account does not exist',
-        ])->withInput();
     }
-
     public function accountLogout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        return redirect('/');
     }
 }
