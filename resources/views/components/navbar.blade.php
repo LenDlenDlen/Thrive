@@ -1,4 +1,4 @@
-<nav class="bg-orange-600" x-data="{ optionsMenuOpen: false, profileMenuOpen: false, mobileMenuOpen: false }">
+<nav class="bg-orange-600 bg-opacity-85" x-data="{ optionsMenuOpen: false, profileMenuOpen: false, mobileMenuOpen: false }">
     <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -21,21 +21,22 @@
             <div class="flex space-x-4">
               <a href={{ route('home') }} class="rounded-md px-3 py-2 text-sm font-medium hover:bg-white text-gray-900" aria-current="page">Home</a>
               <a href={{ route('startBusiness') }} class="rounded-md px-3 py-2 text-sm font-medium hover:bg-white text-gray-900" aria-current="page">Start Your Business</a>
-              <a href={{ route('Fund') }} class="rounded-md px-3 py-2 text-sm font-medium hover:bg-white text-gray-900">Fund a Business</a>
+              <a href={{ route('fundBusiness') }} class="rounded-md px-3 py-2 text-sm font-medium hover:bg-white text-gray-900">Fund a Business</a>
               <a href="#" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-white text-gray-900">Your Business</a>
             </div>
           </div>
         </div>
-
+        {{-- dropdown menu --}}
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-          <!-- Conditional for Guests or Authenticated Users -->
+          <!-- check user -->
           @if(Auth::check())
-            <!-- Profile dropdown for logged-in users -->
+            <!-- if user logged-in -->
             <div class="relative ml-3">
               <div>
                 <button type="button" @click="profileMenuOpen = !profileMenuOpen" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                   <span class="sr-only">Open user menu</span>
-                  <img class="h-8 w-8 rounded-full" src="{{ Auth::user()->profile_picture ?? 'default-avatar.jpg' }}" alt="Profile Picture">
+                  {{-- {{ Auth::user()->profile_picture ?? 'default-avatar.jpg' }} --}}
+                  <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Profile Picture">
                 </button>
               </div>
 
@@ -57,12 +58,12 @@
               </div>
             </div>
           @else
-            <!-- Guest user view -->
+            <!-- navbar for guest -->
             <div class="relative ml-3">
               <div>
                 <button type="button" @click="profileMenuOpen = !profileMenuOpen" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="guest-menu-button" aria-expanded="false" aria-haspopup="true">
                   <span class="sr-only">Open guest menu</span>
-                  <img class="h-8 w-8 rounded-full" src="default-guest-icon.jpg" alt="Guest">
+                  <img class="h-10 w-10 rounded-full bg-white object-contain" src={{ Storage::url('guest-icon.png') }} alt="Guest">
                 </button>
               </div>
 

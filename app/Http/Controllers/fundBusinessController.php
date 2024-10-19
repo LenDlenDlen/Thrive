@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Business;
 use Illuminate\Http\Request;
 
 class fundBusinessController extends Controller
 {
     public function showFundBusiness(){
-        return view("FundBusiness");
+        return view("fundBusiness");
+    }
+
+    public function showByCategory(Request $request){
+        $category = $request->category;
+
+            $businesses = Business::where("category",$category)->get();
+
+        return view('fundBusiness', compact('businesses', 'category'));
     }
 }

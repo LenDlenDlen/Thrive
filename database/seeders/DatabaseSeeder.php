@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Business;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -19,5 +20,14 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // $this->call(UserSeeder::class);
+
+        // Business::create([
+        //     'name' => 'Sample Business',
+        //     'description' => 'This is a sample business.',
+        //     'category' => 'Food & Beverages',
+        //     'image' => 'images/businesses/sample-image.jpg', // Image path
+        // ]);
     }
 }

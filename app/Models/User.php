@@ -40,10 +40,11 @@ class User extends Authenticatable
      * @return array<string, string>
      */
 
-     protected $casts = [ // Fix here: this is a property, not a function
+     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed', // Optional, Laravel will handle password hashing
+        'password' => 'hashed',
     ];
+
     // protected function casts(): array
     // {
     //     return [

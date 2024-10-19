@@ -27,16 +27,14 @@ Route::get('/register', [registerController::class, 'showRegisterPage'])->name('
 Route::get('/login', [loginController::class, 'showLoginPage'])->name('login');
 Route::post('/register', [registerController::class, 'accountRegister'])->name('accountRegister');
 Route::post('/login', [loginController::class,'accountLogin'])->name('accountLogin');
-
 });
 
 Route::middleware(['auth'])->group(function () {
 // post data to database
-Route::get('/fundBusiness', [fundBusinessController::class,'showFundBusiness'])->name('Fund');
+Route::get('/fundBusiness', [fundBusinessController::class,'showFundBusiness'])->name('fundBusiness');
 Route::get('/changePassword', [ForgetPasswordController::class,'showChangePassword'])->name('changePassword');
+route::get('/fundBusiness/category/{category}', [fundBusinessController::class,'showByCategory'])->name('FundByCategory');
 
 Route::post('/startBusiness', [businessController::class, 'store'])->name('startBusiness.store');
-
-
 Route::post('/logout', [loginController::class, 'accountLogout'])->name('accountLogout');
 });

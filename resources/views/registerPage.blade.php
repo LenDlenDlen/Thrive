@@ -16,7 +16,7 @@
         <!-- Left -->
         <div class="bg-gray-200 p-8 flex flex-col items-center justify-center md:w-1/2">
             <div class="bg-orange-400 text-center text-white p-4 rounded-lg mt-4">
-                <img src="{{ asset('storage/logoStrive.jpg') }}" alt="Thrive Logo" class="w-48 md:w-64 lg:w-72"> <!-- Larger logo with responsive scaling -->
+                <img src="{{ asset('storage/strive-logo.png') }}" alt="Thrive Logo" class="w-48 md:w-64 lg:w-72"> <!-- Larger logo with responsive scaling -->
 
             </div>
             <h2 class="text-gray-800 text-xl font-semibold mb-2">Help Others <span class="font-bold">Thrive</span> Together!</h2>
@@ -26,11 +26,11 @@
         <div class="bg-gray-50 p-8 md:w-1/2 flex flex-col justify-center">
             <h2 class="text-gray-800 text-2xl font-bold mb-6 text-center">Create Your Thrive Account</h2>
 
-            <form action="{{ route('accountRegister') }}" method="POST" class="space-y-4">
+            <form action={{ route('accountRegister') }} method="POST" class="space-y-4">
                 @csrf
                 <div class="flex flex-col">
                     <label for="Email" class="text-gray-700 font-semibold mb-1">Email</label>
-                    <input type="text" id="username" name="email" placeholder="example.email@gmail.com" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500" value ="{{$errors->has('email') ? '' : old('email') }}">
+                    <input type="email" id="email" name="email" placeholder="example.email@gmail.com" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500" value ="{{$errors->has('email') ? '' : old('email') }}">
                     @error('email')
                         <span class="text-red-500 text-sm mt-1 error-message">{{ $message }}</span>
                     @enderror
@@ -38,7 +38,7 @@
 
                 <div class="flex flex-col">
                     <label for="name" class="text-gray-700 font-semibold mb-1">Account Name</label>
-                    <input type="text" id="account_name" name="name" placeholder="Your Account Name" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500" value="{{$errors->has('name') ? '' : old('name') }}">
+                    <input type="text" id="name" name="name" placeholder="Your Account Name" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500" value="{{$errors->has('name') ? '' : old('name') }}">
                     @error('name')
                         <span class="text-red-500 text-sm mt-1 error-message">{{ $message }}</span>
                     @enderror
