@@ -18,8 +18,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'username',
+        'email',
         'password',
-        'email'
+        'name',
+        'role',
     ];
 
     /**
@@ -37,11 +39,16 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
+
+     protected $casts = [ // Fix here: this is a property, not a function
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed', // Optional, Laravel will handle password hashing
+    ];
+    // protected function casts(): array
+    // {
+    //     return [
+    //         'email_verified_at' => 'datetime',
+    //         'password' => 'hashed',
+    //     ];
+    // }
 }

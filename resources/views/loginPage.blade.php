@@ -20,10 +20,32 @@
         </div>
 
         <!-- Right Side  -->
+
+
         <div class="bg-gray-50 p-8 md:w-1/2 flex flex-col justify-center">
             <h2 class="text-gray-800 text-2xl font-bold mb-6 text-center">Login to Your Thrive Account</h2>
 
-            <form action="#" method="POST" class="space-y-4">
+            @if(session('success'))
+            <div id="success-message" class="flex flex-col bg-green-500 text-white p-4 rounded mb-4 text-center">
+                {{ session('success') }}
+            </div>
+        @endif
+
+
+            @if ($errors->has('username'))
+                    <div class="bg-red-500 text-white p-4 rounded mb-4 text-center">
+                        {{ $errors->first('username') }}
+                    </div>
+            @endif
+
+            @if ($errors->has('password'))
+                <div class="bg-red-500 text-white p-4 rounded mb-4 text-center">
+                    {{ $errors->first('password') }}
+                </div>
+            @endif
+
+            <form action="{{ route('accountLogin') }}" method="POST" class="space-y-4">
+                @csrf
                 <div class="flex flex-col">
                     <label for="username" class="text-gray-700 font-semibold mb-1">Username</label>
                     <input type="text" id="username" name="username" placeholder="Username" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
@@ -33,15 +55,31 @@
                     <label for="password" class="text-gray-700 font-semibold mb-1">Password</label>
                     <input type="password" id="password" name="password" placeholder="Password" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
                 </div>
-                <!-- Routing disini nanti -->
+
                 <button type="submit" class="w-full bg-orange-400 text-white py-2 rounded-md hover:bg-orange-600 transition duration-300">LOGIN</button>
             </form>
+
 
             <p class="text-center text-gray-600 mt-4">
                 Don't have an account yet? <a href={{ route('register') }} class="text-orange-500 font-semibold">Register</a>
             </p>
         </div>
     </div>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const successMessage = document.getElementById('success-message');
+            if (successMessage) {
+                setTimeout(() => {
+                    successMessage.style.opacity = '0';
+                    successMessage.style.transition = 'opacity 0.35s ease';
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 500);
+                }, 4000);
+            }
+        });
+    </script>
 </body>
+
+
 </html>

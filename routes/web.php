@@ -3,25 +3,40 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\loginController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\businessController;
+use App\Http\Controllers\fundBusinessController;
+use App\Http\Controllers\ForgetPasswordController;
 
 Route::get('/', function () {
-    return view('index');
+    return view('home');
+})->name('home');
+
+Route::get('/fund', function () {
+    return view('fundPage');
+})->name('fund');
+
+Route::get('/startBusiness', function () {
+    return view('startBusinessPage');
+})->name('startBusiness');
+
+
+
+Route::middleware(['guest'])->group(function () {
+// return view page
+Route::get('/register', [registerController::class, 'showRegisterPage'])->name('register');
+Route::get('/login', [loginController::class, 'showLoginPage'])->name('login');
+Route::post('/register', [registerController::class, 'accountRegister'])->name('accountRegister');
+Route::post('/login', [loginController::class,'accountLogin'])->name('accountLogin');
+
 });
 
-Route::get('/login', function () {
-    return view('loginPage');
-});
-Route::get('/register', function () {
-    return view('registerPage');
-});
+Route::middleware(['auth'])->group(function () {
+// post data to database
+Route::get('/fundBusiness', [fundBusinessController::class,'showFundBusiness'])->name('Fund');
+Route::get('/changePassword', [ForgetPasswordController::class,'showChangePassword'])->name('changePassword');
 
-Route::get('/about', function() {
-    return view('about');
+Route::post('/startBusiness', [businessController::class, 'store'])->name('startBusiness.store');
+
+
+Route::post('/logout', [loginController::class, 'accountLogout'])->name('accountLogout');
 });
-
-Route::post('/post', [PostController::class, 'post'])->name('post');
-
-Route::get('/login', [registerController::class, 'showRegisterPage'])->name('register');
-Route::get('/register', [loginController::class, 'showLoginPage'])->name('login');
-// Route::post('/registration', [registerController::class, 'register']);
