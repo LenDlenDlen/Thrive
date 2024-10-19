@@ -2,14 +2,22 @@
 
 @section('content')
     <div class="max-w-md mx-auto mt-10">
-        <label for="message" class="block text-sm font-medium text-gray-900 mb-1">What's on Your Thoughts?</label>
-        <textarea id="message" name="message" rows="4" 
+      <form action="{{ route('post') }}" method="post">
+        @csrf
+
+        <label for="content" class="block text-sm font-medium text-gray-900 mb-1">What's on Your Thoughts?</label>
+        <textarea id="content" name="content" rows="4" 
         class="block w-full rounded-md border border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 sm:text-sm p-2 mb-2"
-        placeholder="Write something..."></textarea>
+        placeholder="Write something..." ></textarea>
+        @error('content')
+          <p class="text-sm font-small text-red-600">{{$message}}</p>
+        @enderror
+        
         <div class="flex justify-end space-x-2">
-            <button class="bg-white px-2 rounded-md border shadow-sm">Cancel</button>
-            <button class="bg-orange-600 text-white px-4 rounded-md border shadow-sm hover:bg-orange-700 hover:shadow-sm">Post</button>
+            <button type="reset" class="bg-white px-2 rounded-md border shadow-sm">Cancel</button>
+            <button type="submit" class="bg-orange-600 text-white px-4 rounded-md border shadow-sm hover:bg-orange-700 hover:shadow-sm">Post</button>
         </div>
+      </form>
     </div>
 
     <div class="container mx-auto p-5 mt-10 rounded-md shadow-md">
