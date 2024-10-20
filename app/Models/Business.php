@@ -9,4 +9,10 @@ class Business extends Model
 {
     use HasFactory;
     protected $fillable = ['user_id', 'name', 'description', 'category', 'photo'];
+
+    public function images()
+    {
+        return $this->hasMany(BusinessImage::class);
+    }
+
 }

@@ -33,7 +33,11 @@
         <div class="grid grid-cols-3 gap-4">
             @forelse($businesses as $business)
                 <div class="bg-gray-300 h-40 rounded-lg hover:bg-gray-400 rounded-md">
-                    <img src= {{ asset('images/business'. $business->images) }} alt= {{ $business->image }}>
+                    <div class="flex space-x-2">
+                        @foreach ($business->images as $image)
+                            <img src="{{ asset($image->image_path) }}" alt="{{ $business->name }}" class="w-20 h-20 object-cover rounded-md">
+                        @endforeach
+                    </div>
                     <h3 class="text-center font-bold mt-4"> {{ $business->name }} </h3>
                     <p class="text-center"> {{ $business->description }} </p>
                 </div>
