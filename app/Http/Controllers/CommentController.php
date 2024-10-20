@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class PostController extends Controller
-{   
-    public function store(Request $request) {
+class CommentController extends Controller
+{
+    public function store(Request $request, $postId)
+    {
         $fields = $request->validate([
             'content' => 'required|max:255'
         ]);
 
         $fields['user_id'] = Auth::id();
-        Post::create($fields);
+        $fields['post_id'] = $postId;
+        Comment::create($fields);
         
-        return redirect()->route('index');
+        return redirect()->back();
     }
 }
