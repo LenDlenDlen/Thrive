@@ -6,7 +6,7 @@
 <div class="container mx-auto p-4">
     <div class="flex">
         <!-- Left Sidebar -->
-        <div class="w-1/4 bg-gray-100 p-4">
+        <div class="w-1/4 bg-orange-100 p-4">
             <!-- Profile Section -->
             <div class="mb-4 flex items-center space-x-2">
                 <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Profile Image" class="w-12 h-12 rounded-full">
@@ -19,7 +19,7 @@
             @else
                 <div class="space-y-2">
                     @foreach($businesses as $business)
-                        <div class="bg-red-500 h-20 flex items-center justify-center cursor-pointer"
+                        <div class="bg-orange-400 h-20 flex items-center justify-center cursor-pointer"
                             onclick="showBusinessDetails({{ $business->id }}, '{{ $business->name }}', '{{ $business->description }}')">
                             <h3 class="text-white font-bold">{{ $business->name }}</h3>
                         </div>
@@ -31,23 +31,16 @@
         <!-- Main Content -->
         <div id="mainContent" class="w-3/4 p-4" style="display:none;">
             <!-- Business Image and Info -->
-            <div class="mb-4 flex items-center space-x-2">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Profile Image" class="w-12 h-12 rounded-full">
-                <h3 class="text-lg font-bold">{{ auth()->user()->name }}</h3> <!-- Display logged-in user's name -->
-            </div>
+            <h1 id="businessName" class="text-2xl font-bold"></h1>
 
             <!-- Business Description and Image -->
-            <div id="businessImageContainer" class="mb-4 h-64 flex items-center justify-center">
+            <div id="businessImageContainer" class="relative mb-4 h-64 flex items-center justify-center">
+                <button id="prevImage" class="absolute left-0 bg-orange-300 p-2 rounded" onclick="prevImage()">← Prev</button>
                 <img id="businessImage" src="" alt="Business Image" class="h-full object-contain">
+                <button id="nextImage" class="absolute right-0 bg-orange-300 p-2 rounded" onclick="nextImage()">Next →</button>
             </div>
-            <h2 id="businessName" class="text-xl font-bold"></h2>
-            <p id="businessDescription" class="text-sm"></p>
 
-            <!-- Arrow Controls (For Multiple Images) -->
-            <div id="imageNav" class="flex justify-between mt-4">
-                <button id="prevImage" class="bg-gray-300 p-2 rounded" onclick="prevImage()">← Prev</button>
-                <button id="nextImage" class="bg-gray-300 p-2 rounded" onclick="nextImage()">Next →</button>
-            </div>
+            <p id="businessDescription" class="text-lg"></p>
         </div>
 
         <!-- Message when no business is selected -->
