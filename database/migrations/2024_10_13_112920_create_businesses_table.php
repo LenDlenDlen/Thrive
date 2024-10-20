@@ -15,9 +15,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name');
-            $table->string('description')->nullable();
+            $table->string('description');
             $table->string('category');
-            $table->string('photo')->nullable();
+            $table->string('photo');
+            $table->string('status')->default('active');
+            $table->bigInteger('goal_amount');
+            $table->bigInteger('raised_amount')->default(0);
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

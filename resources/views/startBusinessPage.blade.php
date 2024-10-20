@@ -5,7 +5,7 @@
 
     <div class="absolute top-0 left-0 h-full w-1/3 bg-orange-300 bg-opacity-50 flex flex-col justify-center items-center">
         <h2 class="text-3xl font-meidum text-black text-center">Help Others</h2>
-        <div class="flex">
+        <div class="flex gap-1">
             <h2 class="text-3xl font-extrabold text-black text-center">Thrive </h2>
             <h2 class="text-3xl font-medium text-black text-center"> Together</h2>
         </div>
@@ -14,7 +14,7 @@
 
     <div class="w-2/3 h-full flex justify-center pr-12 items-center">
         <div class="bg-white bg-opacity-80 p-8 rounded-lg shadow-lg w-full max-w-md text-center">
-            <h2 class="text-2xl font-bold mb-6">Let's start your own Business</h2>
+            <h2 class="text-2xl font-bold mb-6">Let's Start Your Own Business</h2>
 
             <form action="{{ route('startBusiness.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <textarea name="productDescription" placeholder="Describe your business" required
+                    <textarea name="productDescription" placeholder="Describe Your Business" required
                         class="w-full h-32 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm resize-none"></textarea>
                 </div>
 
