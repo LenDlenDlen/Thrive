@@ -27,7 +27,7 @@ class BusinessSeeder extends Seeder
 
 
         DB::table('business_images')->insert([
-            ['business_id' => $business1, 'image_path' => 'storage/Business_image/wine.jpeg', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['business_id' => $business1, 'image_path' => 'business_photos/wine.jpeg', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
     }
 }
