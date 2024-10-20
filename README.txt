@@ -62,3 +62,7 @@ Fundraising Functionality
 Funding a Business
 Users can contribute to other businesses by visiting their details page and making a donation.
 
+====================================================================================================================================================================================
+Contributions
+This project is open for contributions. Feel free to fork the repository, create pull requests, or suggest features through issues.
+
