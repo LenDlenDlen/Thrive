@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('category');
-            $table->string('photo');
             $table->string('status')->default('active');
             $table->bigInteger('goal_amount');
             $table->bigInteger('raised_amount')->default(0);

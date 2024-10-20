@@ -21,7 +21,6 @@ class BusinessSeeder extends Seeder
                 'name' => 'Restaurant A',
                 'description'=> 'Garang Asem Jumbo',
                 'category'=> 'Food & Beverages',
-                'photo' => 'Test',
                 'goal_amount' => 100000000,
                 'created_at' => Carbon::now(),
                 'updated_at'=> Carbon::now()
