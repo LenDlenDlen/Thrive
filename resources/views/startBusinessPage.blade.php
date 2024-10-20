@@ -15,7 +15,7 @@
 
     <div class="w-2/3 h-full flex justify-center pr-12 items-center">
         <div class="bg-white bg-opacity-80 p-8 rounded-lg shadow-lg w-full max-w-md text-center">
-            <h2 class="text-2xl font-bold mb-6">Let's start your own Business</h2>
+            <h2 class="text-2xl font-bold mb-6">Let's Start Your Own Business</h2>
 
             <form action="{{ route('startBusiness.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf

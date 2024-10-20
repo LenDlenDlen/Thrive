@@ -40,6 +40,7 @@ class loginController extends Controller
             ])->withInput();
         }
     }
+
     public function accountLogout(Request $request)
     {
         Auth::logout();

@@ -4,12 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\businessController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\fundBusinessController;
 use App\Http\Controllers\ForgetPasswordController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
+use App\Models\Post;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::get('/fund', function () {
     return view('fundPage');
@@ -40,5 +42,6 @@ Route::post('/logout', [loginController::class, 'accountLogout'])->name('account
 Route::get('/yourBusiness', [businessController::class, 'showBusinessList'])->name('yourBusiness');
 Route::get('/business/{id}/images', [businessController::class, 'getBusinessImages']);
 
-
+Route::post('/post', [PostController::class, 'store'])->name('post.store');
+Route::post('posts/{post}/reply', [CommentController::class, 'store'])->name('comment.store');
 });
