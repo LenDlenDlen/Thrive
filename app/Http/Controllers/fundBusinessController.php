@@ -13,8 +13,7 @@ class fundBusinessController extends Controller
 
     public function showByCategory(Request $request){
         $category = $request->category;
-
-            $businesses = Business::where("category",$category)->get();
+        $businesses = Business::where('category',$category)->with('images')->get();
 
         return view('fundBusiness', compact('businesses', 'category'));
     }

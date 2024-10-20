@@ -16,7 +16,7 @@ class BusinessSeeder extends Seeder
     {
         $user = DB::table("users")->first();
 
-        $business1 = DB::table('Businesses')->insertGetId([
+        $business1 = DB::table('businesses')->insertGetId([
                 'user_id' => $user->id,
                 'name' => 'Restaurant A',
                 'description'=> 'Garang Asem Jumbo',
