@@ -38,7 +38,7 @@
 
                 <div class="flex flex-col">
                     <label for="name" class="text-gray-700 font-semibold mb-1">Account Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your Account Name" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500" value="{{$errors->has('name') ? '' : old('name') }}">
+                    <input type="text" id="name" name="name" placeholder="Your account name" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500" value="{{$errors->has('name') ? '' : old('name') }}">
                     @error('name')
                         <span class="text-red-500 text-sm mt-1 error-message">{{ $message }}</span>
                     @enderror
@@ -62,18 +62,18 @@
 
                 <div class="flex flex-col">
                     <label for="password_confirmation" class="text-gray-700 font-semibold mb-1">Confirm Password</label>
-                    <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                    <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm password" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500" required>
 
                     @error('password')
                         <span class="text-red-500 text-sm mt-1 error-message">{{ $message }}</span>
                     @enderror
                 </div>
 
-                <button type="submit" class="w-full bg-orange-400 text-white py-2 rounded-md hover:bg-orange-600 transition duration-300">REGISTER</button>
+                <button type="submit" class="w-full bg-orange-400 text-white py-2 rounded-md hover:bg-orange-600 transition duration-300">Register</button>
             </form>
 
             <p class="text-center text-gray-600 mt-4">
-                Already have an account? <a href={{ route('login') }} class="text-orange-500 font-semibold">login</a>
+                Already have an account? <a href={{ route('login') }} class="text-orange-500 font-semibold">Login</a>
             </p>
         </div>
     </div>

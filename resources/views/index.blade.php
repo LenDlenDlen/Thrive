@@ -64,42 +64,4 @@
         @endforeach
     </div>
   </div>
-
-  <div class="container mx-auto p-5 mt-10 rounded-md shadow-md mb-10">
-      <h2 class="text-2xl font-semibold mb-5">Enterprise</h2>
-      <div class="max-w-sm mx-auto bg-white rounded-xl shadow-md overflow-hidden">
-          <!-- Slider Container -->
-          <div class="relative max-w-lg mx-auto overflow-hidden">
-            <!-- Slider Content (Images) -->
-            <div id="cardSlider" class="flex transition-transform duration-500">
-                <img src="https://via.placeholder.com/400x200?text=Slide+1"
-                    class="w-full flex-shrink-0" alt="Slide 1">
-                <img src="https://via.placeholder.com/400x200?text=Slide+2"
-                    class="w-full flex-shrink-0" alt="Slide 2">
-                <img src="https://via.placeholder.com/400x200?text=Slide+3"
-                    class="w-full flex-shrink-0" alt="Slide 3">
-            </div>
-
-            <!-- Navigation Buttons -->
-            <button id="prevCard"
-                    class="absolute left-2 top-1/2 -translate-y-1/2 bg-white px-4 py-2 shadow-md">
-                Prev
-            </button>
-            <button id="nextCard"
-                    class="absolute right-2 top-1/2 -translate-y-1/2 bg-white px-4 py-2 shadow-md">
-                Next
-            </button>
-          </div>
-          <div class="p-4">
-            <h2 class="text-xl font-bold mb-2">Card Title</h2>
-            <p class="text-gray-600 mb-4">
-              This is a simple card component with a title, some text, and a button.
-            </p>
-            <button
-              class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded">
-              Learn More
-            </button>
-          </div>
-      </div>
-  </div>
 @endsection
