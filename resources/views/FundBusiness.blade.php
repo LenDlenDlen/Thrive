@@ -52,6 +52,8 @@
         <div class="grid grid-cols-3 gap-4">
             <!-- Example businesses -->
             <div class="bg-gray-300 h-40 rounded-lg hover:bg-gray-400"></div>
+            <div class="bg-gray-300 h-40 rounded-lg hover:bg-gray-400"></div>
+            <div class="bg-gray-300 h-40 rounded-lg hover:bg-gray-400"></div>
         </div>
     </div>
     @endif
