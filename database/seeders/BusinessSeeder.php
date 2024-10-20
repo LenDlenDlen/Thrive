@@ -14,7 +14,10 @@ class BusinessSeeder extends Seeder
      */
     public function run(): void
     {
+        $user = DB::table("users")->first();
+
         $business1 = DB::table('Businesses')->insertGetId([
+                'user_id' => $user->id,
                 'name' => 'Restaurant A',
                 'description'=> 'Garang Asem Jumbo',
                 'category'=> 'Food & Beverages',
@@ -23,8 +26,8 @@ class BusinessSeeder extends Seeder
             ]);
 
 
-        DB::table('Business_images')->insert([
-            ['business_id' => $business1, 'image_path' => 'storage/Vusiness_image/wine.jpeg', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+        DB::table('business_image')->insert([
+            ['business_id' => $business1, 'image_path' => 'storage/Business_image/wine.jpeg', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
     }
 }
