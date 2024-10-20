@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('business_image', function (Blueprint $table) {
+        Schema::create('business_images', function (Blueprint $table) {
             $table->id();
-            $table-> foreignId('business_id')->constrained('businesses')->onDelete('cascade');
-            $table->string('image_path');
+            $table->unsignedBigInteger('business_id');
+            $table->string('image_path'); // Store the path to the uploaded image
+            $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
             $table->timestamps();
         });
     }

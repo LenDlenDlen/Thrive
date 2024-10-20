@@ -35,11 +35,15 @@
                         <option value="Food and Beverages">Food and Beverages</option>
                         <option value="Services">Services</option>
                         <option value="Retail">Retail</option>
+                        <option value="Services">Apparels</option>
+                        <option value="Retail">Art and Crafts</option>
+                        <option value="Services">Games</option>
+                        <option value="Retail">Movie and Short Films</option>
                     </select>
                 </div>
 
                 <div class="mb-6">
-                    <input type="file" name="productPhoto" accept="image/*" required
+                    <input type="file" name="productPhotos[]" accept="image/*" multiple required
                         class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent">
                 </div>
 
