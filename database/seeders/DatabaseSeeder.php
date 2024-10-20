@@ -26,12 +26,13 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UserSeeder::class);
         $this->call(BusinessSeeder::class);
-        
+
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
 
         Post::factory(10)->create();
         Comment::factory(10)->create();
+        Business::factory(10)->create();
     }
 }

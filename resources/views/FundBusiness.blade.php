@@ -10,11 +10,11 @@
         <div class="flex justify-center items-center gap-4">
             <a href={{ route('FundByCategory', ['category' => 'Food & Beverages']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md transition-all">Food & Beverages</a>
             <a href={{ route('FundByCategory', ['category' => 'Services']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md">Services</a>
-            <a href={{ route('FundByCategory', ['category' => 'Retails']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md">Retails</a>
-            <a href={{ route('FundByCategory', ['category' => 'Apparels']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md">Apparels</a>
-            <a href={{ route('FundByCategory', ['category' => 'Art & Crafts']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md">Art & Crafts</a>
-            <a href={{ route('FundByCategory', ['category' => 'Games']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md">Games</a>
-            <a href={{ route('FundByCategory', ['category' => 'Movie & Short Films']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md">Movie & Short Films</a>
+            <a href={{ route('FundByCategory', ['category' => 'Retails']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md transition-all">Retails</a>
+            <a href={{ route('FundByCategory', ['category' => 'Apparels']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md transition-all">Apparels</a>
+            <a href={{ route('FundByCategory', ['category' => 'Art & Crafts']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md transition-all">Art & Crafts</a>
+            <a href={{ route('FundByCategory', ['category' => 'Games']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md transition-all">Games</a>
+            <a href={{ route('FundByCategory', ['category' => 'Movie & Short Films']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md transition-all">Movie & Short Films</a>
         </div>
         <hr class="h-px mt-5 dark:bg-gray-400">
     </div>
@@ -31,18 +31,22 @@
     <div class="mt-8">
         <div class="grid grid-cols-3 gap-4">
             @foreach($businesses as $business)
-                <div class="bg-gray-300 h-40 rounded-lg hover:bg-gray-400 rounded-md">
-                    <div class="flex space-x-2">
+            {{-- div per card --}}
+                <div class="bg-gray-300 flex-col rounded-lg">
+                    {{-- div buat gambar --}}
+                    <div class="flex space-x-2 justify-center mt-2">
                         @if($business->images->isNotEmpty())
                         @foreach ($business->images as $image)
-                            <img src={{ asset($image->image_path) }} alt={{ $business->name }} class="w-20 h-20 object-cover rounded-md">
+                            <img src={{ asset($image->image_path) }} alt={{ $business->name }} class="w-40 h-40 object-cover rounded-md">
                         @endforeach
-
-
                         @endif
                     </div>
-                    <h3 class="text-center font-bold mt-4"> {{ $business->name }} </h3>
-                    <p class="text-center"> {{ $business->description }} </p>
+                    <div class="space-x-2 items-center">
+                        <h3 class="text-center font-bold mt-4"> {{ $business->name }} </h3>
+                        <p class="text-center"> {{ $business->description }} </p>
+                        <button>View</button>
+                    </div>
+
                 </div>
             @endforeach
         </div>

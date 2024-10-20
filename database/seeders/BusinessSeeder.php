@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
+use App\Models\Business;
 
 class BusinessSeeder extends Seeder
 {
@@ -26,9 +27,10 @@ class BusinessSeeder extends Seeder
                 'updated_at'=> Carbon::now()
             ]);
 
-
         DB::table('business_images')->insert([
             ['business_id' => $business1, 'image_path' => 'storage/Business_image/wine.jpeg', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
         ]);
+
+        Business::factory()->count(10)->create();
     }
 }

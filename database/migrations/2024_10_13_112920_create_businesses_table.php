@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name');
-            $table->string('description');
+            $table->text('description');
             $table->string('category');
             $table->string('status')->default('active');
-            $table->bigInteger('goal_amount');
+            $table->bigInteger('goal_amount')->nullable();
             $table->bigInteger('raised_amount')->default(0);
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
