@@ -26,7 +26,7 @@
             <div id="success-message" class="flex flex-col bg-green-500 text-white p-4 rounded mb-4 text-center">
                 {{ session('success') }}
             </div>
-        @endif
+            @endif
 
 
             @if ($errors->has('username'))
@@ -53,7 +53,7 @@
                     <input type="password" id="password" name="password" placeholder="Password" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
                 </div>
 
-                <button type="submit" class="w-full bg-orange-400 text-white py-2 rounded-md hover:bg-orange-600 transition duration-300">LOGIN</button>
+                <button type="submit" class="w-full bg-orange-400 text-white py-2 rounded-md hover:bg-orange-600 transition duration-300">Login</button>
             </form>
 
 

@@ -17,11 +17,11 @@ Route::get('/fund', function () {
     return view('fundPage');
 })->name('fund');
 
+Route::get('/business/{id}', [fundBusinessController::class, 'show'])->name('fund.business.show');
+
 Route::get('/yourBusiness', function () {
     return view('yourBusiness');
 })->name('yourBusiness');
-
-
 
 Route::middleware(['guest'])->group(function () {
 // return view page
@@ -44,4 +44,5 @@ Route::get('/business/{id}/images', [businessController::class, 'getBusinessImag
 
 Route::post('/post', [PostController::class, 'store'])->name('post.store');
 Route::post('posts/{post}/reply', [CommentController::class, 'store'])->name('comment.store');
+Route::post('/business/{id}/fund', [fundBusinessController::class, 'donate'])->name('fund.donate');
 });

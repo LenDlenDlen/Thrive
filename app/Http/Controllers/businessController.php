@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Business;
 use App\Models\BusinessImage;
+use Illuminate\Support\Facades\Auth;
 
 class businessController extends Controller
 {
@@ -13,13 +14,13 @@ class businessController extends Controller
     }
 
     public function getBusinessImages($id)
-{
-    // Fetch the images for the business
-    $images = BusinessImage::where('business_id', $id)->get(['image_path']);
+    {
+        // Fetch the images for the business
+        $images = BusinessImage::where('business_id', $id)->get(['image_path']);
 
-    // Return the images as a JSON response
-    return response()->json(['images' => $images]);
-}
+        // Return the images as a JSON response
+        return response()->json(['images' => $images]);
+    }
 
 
     public function store(Request $request)
@@ -29,22 +30,21 @@ class businessController extends Controller
             'businessName' => 'required|string|max:255',
             'productDescription' => 'nullable|string',
             'category' => 'required|string',
-            'productPhotos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validate each image
+            'goalAmount' => 'required|integer',
+            'productPhotos.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Create a new business entry
         $business = new Business;
-        $business->user_id = auth()->id(); // assuming the user is authenticated
+        $business->user_id = Auth::id();
         $business->name = $validated['businessName'];
         $business->description = $validated['productDescription'];
         $business->category = $validated['category'];
-        $business->save(); // Save the business first so we can attach images to it
+        $business->goal_amount = $validated['goalAmount'];
+        $business->save();
 
-        // Handle file uploads
         if ($request->hasFile('productPhotos')) {
             foreach ($request->file('productPhotos') as $photo) {
                 $photoPath = $photo->store('business_photos', 'public');
-                // Create BusinessImage for each uploaded image
                 $businessImage = new BusinessImage;
                 $businessImage->business_id = $business->id;
                 $businessImage->image_path = $photoPath;
@@ -52,13 +52,12 @@ class businessController extends Controller
             }
         }
 
-        // Redirect after saving
         return redirect()->back()->with('success', 'Business created successfully!');
     }
 
     public function showBusinessList() {
         // Fetch all businesses for the authenticated user
-        $businesses = Business::where('user_id', auth()->id())->get();
+        $businesses = Business::where('user_id', Auth::id())->get();
 
         // Pass the businesses to the view
         return view('yourBusiness', compact('businesses'));
