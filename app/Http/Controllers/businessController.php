@@ -8,8 +8,12 @@ use App\Models\BusinessImage;
 
 class businessController extends Controller
 {
-    public function show(){
+    public function showStartBusiness(){
         return view('startBusinessPage');
+    }
+
+    public function showYourBusiness(){
+        return view('yourBusiness');
     }
 
     public function getBusinessImages($id)

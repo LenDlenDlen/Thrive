@@ -22,7 +22,7 @@
               <a href={{ route('index') }} class="rounded-md px-3 py-2 text-sm font-medium hover:bg-white text-gray-900" aria-current="page">Home</a>
               <a href={{ route('startBusiness') }} class="rounded-md px-3 py-2 text-sm font-medium hover:bg-white text-gray-900" aria-current="page">Start Your Business</a>
               <a href={{ route('fundBusiness') }} class="rounded-md px-3 py-2 text-sm font-medium hover:bg-white text-gray-900">Fund a Business</a>
-              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-white text-gray-900">Your Business</a>
+              <a href={{route('yourBusiness')}} class="rounded-md px-3 py-2 text-sm font-medium hover:bg-white text-gray-900">Your Business</a>
             </div>
           </div>
         </div>

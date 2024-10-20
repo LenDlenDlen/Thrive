@@ -36,8 +36,9 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/fundBusiness', [fundBusinessController::class,'showFundBusiness'])->name('fundBusiness');
 Route::get('/changePassword', [ForgetPasswordController::class,'showChangePassword'])->name('changePassword');
 route::get('/fundBusiness/category/{category}', [fundBusinessController::class,'showByCategory'])->name('FundByCategory');
-Route::get('/startBusiness', [businessController::class, 'show'])->name('startBusiness');
+Route::get('/startBusiness', [businessController::class, 'showStartBusiness'])->name('startBusiness');
 Route::post('/startBusiness', [businessController::class, 'store'])->name('startBusiness.store');
+Route::get('/yourBusiness', [businessController::class, 'showYourBusiness'])->name('yourBusiness');
 Route::post('/logout', [loginController::class, 'accountLogout'])->name('accountLogout');
 Route::get('/yourBusiness', [businessController::class, 'showBusinessList'])->name('yourBusiness');
 Route::get('/business/{id}/images', [businessController::class, 'getBusinessImages']);
