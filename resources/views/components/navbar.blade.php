@@ -29,7 +29,7 @@
             <a href="{{ route('index') }}" class="px-3 py-4 rounded-md text-sm font-medium hover:bg-white">Home</a>
             <a href="{{ route('startBusiness') }}" class="px-3 py-4 rounded-md text-sm font-medium hover:bg-white">Start Your Business</a>
             <a href="{{ route('fundBusiness') }}" class="px-3 py-4 rounded-md text-sm font-medium hover:bg-white">Fund a Business</a>
-            <a href="#" class="px-3 py-4 rounded-md text-sm font-medium hover:bg-white">Your Business</a>
+            <a href="{{route('yourBusiness')}}" class="px-3 py-4 rounded-md text-sm font-medium hover:bg-white">Your Business</a>
           </div>
         </div>
       </div>

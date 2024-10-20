@@ -3,13 +3,13 @@
 @section('title', 'Your Business')
 
 @section('content')
-<div class="container mx-auto p-4">
-    <div class="flex">
+<div class="container mx-auto p-6">
+    <div class="flex gap-6">
         <!-- Left Sidebar -->
-        <div class="w-1/4 bg-orange-100 p-4">
+        <div class="bg-orange-100 p-6 rounded-lg shadow-md" style="width: 25%; min-height: auto; max-height: 500px; overflow-y: auto;">
             <!-- Profile Section -->
-            <div class="mb-4 flex items-center space-x-2">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Profile Image" class="w-12 h-12 rounded-full">
+            <div class="mb-6 flex items-center space-x-3">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Profile Image" class="w-14 h-14 rounded-full border border-gray-300">
                 <h3 class="text-lg font-bold">{{ auth()->user()->name }}</h3> <!-- Display logged-in user's name -->
             </div>
 
@@ -17,10 +17,11 @@
             @if ($businesses->isEmpty())
                 <p class="text-gray-600">You have no business.</p>
             @else
-                <div class="space-y-2">
+                <!-- Dynamically adjust the height based on the number of businesses -->
+                <div class="space-y-4">
                     @foreach($businesses as $business)
-                        <div class="bg-orange-400 h-20 flex items-center justify-center cursor-pointer"
-                            onclick="showBusinessDetails({{ $business->id }}, '{{ $business->name }}', '{{ $business->description }}')">
+                        <div class="bg-orange-400 p-4 rounded-md shadow-md flex items-center justify-center cursor-pointer transition duration-200 ease-in-out hover:bg-orange-500"
+                            onclick="showBusinessDetails({{ $business->id }}, '{{ $business->name }}', '{{ $business->description }}', {{ $business->goal_amount }}, {{ $business->raised_amount }})">
                             <h3 class="text-white font-bold">{{ $business->name }}</h3>
                         </div>
                     @endforeach
@@ -29,22 +30,33 @@
         </div>
 
         <!-- Main Content -->
-        <div id="mainContent" class="w-3/4 p-4" style="display:none;">
-            <!-- Business Image and Info -->
-            <h1 id="businessName" class="text-2xl font-bold"></h1>
+        <div id="mainContent" class="w-3/4 p-6 bg-white rounded-lg shadow-md" style="display:none;">
+            <!-- Business Title -->
+            <h1 id="businessName" class="text-3xl font-bold mb-6"></h1>
 
             <!-- Business Description and Image -->
-            <div id="businessImageContainer" class="relative mb-4 h-64 flex items-center justify-center">
-                <button id="prevImage" class="absolute left-0 bg-orange-300 p-2 rounded" onclick="prevImage()">← Prev</button>
-                <img id="businessImage" src="" alt="Business Image" class="h-full object-contain">
-                <button id="nextImage" class="absolute right-0 bg-orange-300 p-2 rounded" onclick="nextImage()">Next →</button>
+            <div id="businessImageContainer" class="relative mb-6 rounded-lg overflow-hidden bg-gray-100" style="height: 300px; position: relative;">
+                <button id="prevImage" class="absolute left-3 top-1/2 transform -translate-y-1/2 bg-orange-300 h-10 w-10 flex items-center justify-center rounded-full shadow-lg hover:bg-orange-400 transition duration-200 ease-in-out" onclick="prevImage()">←</button>
+                <img id="businessImage" src="" alt="Business Image" class="h-full w-full object-cover">
+                <button id="nextImage" class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-orange-300 h-10 w-10 flex items-center justify-center rounded-full shadow-lg hover:bg-orange-400 transition duration-200 ease-in-out" onclick="nextImage()">→</button>
             </div>
 
-            <p id="businessDescription" class="text-lg"></p>
+            <!-- Business Description -->
+            <div class="bg-orange-100 p-4 rounded-lg shadow-md">
+                <h2 class="text-xl font-semibold mb-2">Business Description</h2>
+                <p id="businessDescription" class="text-base leading-6 text-gray-700"></p>
+            </div>
+
+            <!-- Goal Amount and Raised Amount -->
+            <div class="bg-orange-100 p-4 rounded-lg shadow-md mt-4">
+                <h2 class="text-xl font-semibold mb-2">Funding Progress</h2>
+                <p><strong>Goal Amount:</strong> $<span id="goalAmount"></span></p>
+                <p><strong>Raised Amount:</strong> $<span id="raisedAmount"></span></p>
+            </div>
         </div>
 
         <!-- Message when no business is selected -->
-        <div id="selectBusinessMessage" class="w-3/4 p-4">
+        <div id="selectBusinessMessage" class="w-3/4 p-6 bg-white rounded-lg shadow-md">
             @if ($businesses->isNotEmpty())
                 <p class="text-lg font-bold text-center">Select a business to view details</p>
             @endif
@@ -56,9 +68,11 @@
     let images = [];
     let currentImageIndex = 0;
 
-    function showBusinessDetails(businessId, name, description) {
+    function showBusinessDetails(businessId, name, description, goalAmount, raisedAmount) {
         document.getElementById('businessName').textContent = name;
         document.getElementById('businessDescription').textContent = description;
+        document.getElementById('goalAmount').textContent = goalAmount;
+        document.getElementById('raisedAmount').textContent = raisedAmount;
 
         // Fetch images for the selected business
         fetch(`/business/${businessId}/images`)
@@ -67,7 +81,7 @@
                 images = data.images;
                 currentImageIndex = 0;
                 if (images.length > 0) {
-                    // Show the first image
+                    // Show the first image using the correct path
                     document.getElementById('businessImage').src = `/storage/${images[0].image_path}`;
                     document.getElementById('prevImage').style.display = 'block'; // Show arrow controls
                     document.getElementById('nextImage').style.display = 'block'; // Show arrow controls
