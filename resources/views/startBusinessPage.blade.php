@@ -40,7 +40,7 @@
                         <option value="" disabled selected>Choose Category</option>
                         <option value="Food & Beverages">Food and Beverages</option>
                         <option value="Services">Services</option>
-                        <option value="Retail">Retail</option>
+                        <option value="Retails">Retails</option>
                         <option value="Apparels">Apparels</option>
                         <option value="Art & Crafts">Art and Crafts</option>
                         <option value="Games">Games</option>

@@ -9,7 +9,6 @@
         <div class="bg-orange-100 p-6 rounded-lg shadow-md" style="width: 25%; min-height: auto; max-height: 500px; overflow-y: auto;">
             <!-- Profile Section -->
             <div class="mb-6 flex items-center space-x-3">
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Profile Image" class="w-14 h-14 rounded-full border border-gray-300">
                 <h3 class="text-lg font-bold">{{ auth()->user()->name }}</h3> <!-- Display logged-in user's name -->
             </div>
 
@@ -50,8 +49,8 @@
             <!-- Goal Amount and Raised Amount -->
             <div class="bg-orange-100 p-4 rounded-lg shadow-md mt-4">
                 <h2 class="text-xl font-semibold mb-2">Funding Progress</h2>
-                <p><strong>Goal Amount:</strong> $<span id="goalAmount"></span></p>
-                <p><strong>Raised Amount:</strong> $<span id="raisedAmount"></span></p>
+                <p><strong>Goal Amount:</strong> Rp. <span id="goalAmount"></span></p>
+                <p><strong>Raised Amount:</strong> Rp. <span id="raisedAmount"></span></p>
             </div>
         </div>
 
