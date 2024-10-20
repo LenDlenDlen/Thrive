@@ -7,14 +7,14 @@
     <div class="mt-6">
         <h2 class="text-2xl font-bold mb-4">Category</h2>
         <hr class="h-px mb-5 dark:bg-gray-400">
-        <div class="flex justify-center items-center gap-4 flex-wrap">
-            <a href="{{ route('FundByCategory', ['category' => 'Food & Beverages']) }}" class="flex justify-center items-center w-40 h-10 hover:bg-gray-200 rounded-md transition ease-in-out duration-200">Food & Beverages</a>
-            <a href="{{ route('FundByCategory', ['category' => 'Services']) }}" class="flex justify-center items-center w-40 h-10 hover:bg-gray-200 rounded-md transition ease-in-out duration-200">Services</a>
-            <a href="{{ route('FundByCategory', ['category' => 'Retails']) }}" class="flex justify-center items-center w-40 h-10 hover:bg-gray-200 rounded-md transition ease-in-out duration-200">Retails</a>
-            <a href="{{ route('FundByCategory', ['category' => 'Apparels']) }}" class="flex justify-center items-center w-40 h-10 hover:bg-gray-200 rounded-md transition ease-in-out duration-200">Apparels</a>
-            <a href="{{ route('FundByCategory', ['category' => 'Art & Crafts']) }}" class="flex justify-center items-center w-40 h-10 hover:bg-gray-200 rounded-md transition ease-in-out duration-200">Art & Crafts</a>
-            <a href="{{ route('FundByCategory', ['category' => 'Games']) }}" class="flex justify-center items-center w-40 h-10 hover:bg-gray-200 rounded-md transition ease-in-out duration-200">Games</a>
-            <a href="{{ route('FundByCategory', ['category' => 'Movie & Short Films']) }}" class="flex justify-center items-center w-40 h-10 hover:bg-gray-200 rounded-md transition ease-in-out duration-200">Movie & Short Films</a>
+        <div class="flex justify-center items-center gap-4">
+            <a href={{ route('FundByCategory', ['category' => 'Food & Beverages']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md transition-all">Food & Beverages</a>
+            <a href={{ route('FundByCategory', ['category' => 'Services']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md">Services</a>
+            <a href={{ route('FundByCategory', ['category' => 'Retails']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md transition-all">Retails</a>
+            <a href={{ route('FundByCategory', ['category' => 'Apparels']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md transition-all">Apparels</a>
+            <a href={{ route('FundByCategory', ['category' => 'Art & Crafts']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md transition-all">Art & Crafts</a>
+            <a href={{ route('FundByCategory', ['category' => 'Games']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md transition-all">Games</a>
+            <a href={{ route('FundByCategory', ['category' => 'Movie & Short Films']) }}  class="flex justify-center items-center w-1/4 h-10 rounded-md hover:bg-gray-400 rounded-md transition-all">Movie & Short Films</a>
         </div>
         <hr class="h-px mt-5 dark:bg-gray-400">
     </div>

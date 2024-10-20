@@ -13,7 +13,7 @@
         <!-- Left Side -->
         <div class="bg-gray-100 p-8 flex flex-col items-center justify-center md:w-1/2">
             <div class="bg-orange-450 text-center text-white p-4 rounded-lg mt-4">
-                <img src="{{ asset('storage/strive-logo.png') }}" alt="Thrive Logo" class="w-48 md:w-64 lg:w-72"> <!-- Larger logo with responsive scaling -->
+                <img src={{ 'storage/strive-logo.png' }} alt="Thrive Logo" class="w-48 md:w-64 lg:w-72"> <!-- Larger logo with responsive scaling -->
                 <h2 class="text-gray-800 text-xl font-semibold mb-2">Help Others <span class="font-bold">Thrive</span> Together!</h2>
             </div>
         </div>
