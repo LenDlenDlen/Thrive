@@ -4,6 +4,7 @@ An integrated forum and fundraising platform designed to support small and mediu
 ====================================================================================================================================================================================
 
 Thrive Business Platform
+
 Thrive is a business funding and promotion platform that allows users to start businesses, promote them, and raise funding through a crowdfunding model. This project is built using Laravel, and provides features for users to manage their businesses, view funding progress, and engage with potential donors.
 ====================================================================================================================================================================================
 Features
